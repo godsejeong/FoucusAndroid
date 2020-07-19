@@ -6,14 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.splash.SplashActivity">
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--    <com.jjmin.focus.MyVideoView-->
 <!--        android:id="@+id/splashImg"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        app:lottie_autoPlay="true"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
-    <VideoView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splashImg"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"

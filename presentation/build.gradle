@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -14,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -48,6 +53,8 @@ dependencies {
     androidTestImplementation 'org.mockito:mockito-android:2.24.5'
     androidTestImplementation 'org.koin:koin-test:0.9.3'
 
+    //noinspection GradleCompatible
+    implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
 
 
     //noinspection GradleCompatible
@@ -88,7 +95,7 @@ dependencies {
 
     //horizental scroll view
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
-
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
 
 }
