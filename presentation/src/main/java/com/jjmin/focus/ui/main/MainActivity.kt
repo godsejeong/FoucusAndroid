@@ -33,27 +33,40 @@ class MainActivity : BaseActivity() , MainContract.View ,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter.accessTime()
-        startVideo()
-
-        accessBtn.onClick {
-            presenter.getAccessTime()
-        }
-
-
-        ListAdapter(
-            ItemType.MR,this
-        ).apply {
+        ListAdapter(ItemType.MR,this).apply {
             adapter = this
         }
 
-        recommentedPicker.adapter = adapter
+        presenter.accessTime()
+        startVideo()
+        settingPicker()
 
         presenter.dummyList.observe(this, Observer {
             Log.e("updateList",Gson().toJson(it))
             adapter.submitList(it?.toMutableList())
         })
 
+
+        mainImg.setBackgroundResource(presenter.updateTheme())
+
+        accessBtn.onClick {
+            presenter.getAccessTime()
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startVideo()
+    }
+
+    override fun startVideo(){
+        animationVideo.setVideoURI(presenter.videoUrl)
+        animationVideo.start()
+        animationVideo.setOnPreparedListener { mp -> mp.isLooping = true }
+    }
+
+    override fun settingPicker(){
         recommentedPicker.setItemTransformer(
             ScaleTransformer.Builder()
                 .setMaxScale(1.2f)
@@ -66,21 +79,7 @@ class MainActivity : BaseActivity() , MainContract.View ,
         recommentedPicker.addOnItemChangedListener(this)
         recommentedPicker.addScrollStateChangeListener(this)
 
-
-        mainImg.setBackgroundResource(presenter.updateTheme())
-
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        startVideo()
-    }
-
-    fun startVideo(){
-        animationVideo.setVideoURI(presenter.videoUrl)
-        animationVideo.start()
-        animationVideo.setOnPreparedListener { mp -> mp.isLooping = true }
+        recommentedPicker.adapter = adapter
     }
 
     override fun onCurrentItemChanged(holder: MainRecommentViewHolder?, position: Int) {

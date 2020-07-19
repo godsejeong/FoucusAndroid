@@ -6,7 +6,8 @@ import com.jjmin.focus.ui.base.BaseContract
 interface MainContract{
 
     interface View : BaseContract.View {
-
+        fun startVideo()
+        fun settingPicker()
     }
 
     interface Presenter : BaseContract.Presenter{

@@ -48,14 +48,4 @@ class SharedPreferencesUtil(val context : Context) {
             }
         }!!
     }
-
-
-//    fun setHour(h : Int){
-//        hourPref!!.edit().putInt("hour",h).commit()
-//    }
-//
-//    fun getHour() : Int{
-//        return hourPref!!.getInt("hour",0)
-//    }
-
 }
