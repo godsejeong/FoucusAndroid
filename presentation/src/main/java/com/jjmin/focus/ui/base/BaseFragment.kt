@@ -16,11 +16,11 @@ abstract class BaseFragment : Fragment() , BaseContract.View {
         toast(text)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(initLayoutResourse, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(initLayoutResourse, container, false)
+//    }
 }

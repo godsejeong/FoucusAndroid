@@ -75,7 +75,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:3.6.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
 
     implementation 'com.google.android.material:material:1.1.0-alpha05'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
@@ -98,5 +99,7 @@ dependencies {
 
     //horizental scroll view
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
 
 }

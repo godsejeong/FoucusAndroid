@@ -1,8 +1,9 @@
 package com.jjmin.focus.ui.home
 
 import android.os.Bundle
-import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
@@ -16,6 +17,7 @@ import com.yarolegovich.discretescrollview.transform.Pivot
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+
 class HomeFragment : BaseFragment() , HomeContract.View,
     DiscreteScrollView.OnItemChangedListener<MainRecommentViewHolder>,
     DiscreteScrollView.ScrollStateChangeListener<MainRecommentViewHolder>{
@@ -39,25 +41,49 @@ class HomeFragment : BaseFragment() , HomeContract.View,
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        var view = inflater.inflate(initLayoutResourse, container, false)
+
+        adapter = ListAdapter()
+        adapter.setType(ItemType.MR)
 
         animationVideo = view.findViewById(R.id.animationVideo) as LottieAnimationView
         recommentedPicker = view.findViewById(R.id.recommentedPicker) as DiscreteScrollView
         testRv = view.findViewById(R.id.testRv) as RecyclerView
 
 
-        adapter = ListAdapter()
-        adapter.setType(ItemType.MR)
-
-        presenter.dummyList.observe(this.activity!!, Observer {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
-        })
+//        presenter.dummyList.observe(this.activity!!, Observer {
+//            adapter.notifyDataSetChanged()
+//            adapter.submitList(it)
+//        })
 
         presenter.loadUI()
 
+        return view
     }
+
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//
+//
+//        adapter = ListAdapter()
+//        adapter.setType(ItemType.MR)
+//
+//        presenter.dummyList.observe(this.activity!!, Observer {
+//            adapter.submitList(it)
+//            adapter.notifyDataSetChanged()
+//        })
+//
+//        presenter.loadUI()
+//
+//    }
 
     override fun onResume() {
         super.onResume()
@@ -88,9 +114,10 @@ class HomeFragment : BaseFragment() , HomeContract.View,
         recommentedPicker.addScrollStateChangeListener(this)
         recommentedPicker.scrollToPosition(2)
 
-        presenter.init()
+//        presenter.init()
 
         recommentedPicker.adapter = adapter
+        adapter.submitList(presenter.swapList)
 
 
 //        var manager = LinearLayoutManager(activity!!.baseContext)

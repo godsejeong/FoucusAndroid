@@ -1,6 +1,9 @@
 package com.jjmin.focus.adapter
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +12,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.jjmin.focus.R
 import com.jjmin.focus.model.MainRecommentModel
 import com.jjmin.focus.model.ModelImpl
+import org.jetbrains.anko.runOnUiThread
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class MainRecommentViewHolder(
@@ -40,8 +51,24 @@ class MainRecommentViewHolder(
 
         songNameText.text = item.musicName
         songArtistText.text = item.musicArtist
-        Glide.with(itemView.context).load(item.thumbnail).into(thumbnailImg)
 
+//        Glide.with(context)
+//            .load(item.thumbnail)
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .into(thumbnailImg)
+
+        Glide.with(context)
+            .asBitmap()
+            .load(item.thumbnail)
+            .into(object : CustomTarget<Bitmap>(){
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    thumbnailImg.setImageBitmap(resource)
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    thumbnailImg.setImageDrawable(placeholder)
+                }
+            })
 
         Log.e("test","asdfhjklsdfahlweyqripu nasehrj")
 
