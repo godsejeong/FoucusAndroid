@@ -2,7 +2,6 @@ package com.jjmin.focus.ui.main
 
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.jjmin.focus.event.ThemeStatus
 import com.jjmin.focus.event.TimeCheckEvent
 import com.jjmin.focus.utils.SharedPreferencesUtil
@@ -11,7 +10,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 
 
 class MainPresenterTest {

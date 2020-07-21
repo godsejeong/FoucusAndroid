@@ -1,19 +1,17 @@
-package com.jjmin.focus.ui.main
+package com.jjmin.focus.ui.home
 
-import android.net.Uri
 import com.jjmin.focus.ui.base.BaseContract
 
-interface MainContract{
+interface HomeContract{
 
     interface View : BaseContract.View {
-        fun startVideo()
-        fun settingPicker()
+        fun loadUI()
     }
 
     interface Presenter : BaseContract.Presenter{
+        fun loadUI()
         fun updateTheme() : Int
         fun accessTime()
-        var videoUrl : Uri
     }
 
 }

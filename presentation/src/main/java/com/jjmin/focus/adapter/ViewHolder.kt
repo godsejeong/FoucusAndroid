@@ -27,6 +27,8 @@ class MainRecommentViewHolder(
 
     override fun View.onBind(item: ModelImpl) {
 
+        item as MainRecommentModel
+
         container = itemView.findViewById(R.id.thumbnailContainer) as FrameLayout
 
         thumbnailImg = itemView.findViewById(R.id.thumbnailImg) as ImageView
@@ -35,11 +37,13 @@ class MainRecommentViewHolder(
         songNameText = itemView.findViewById(R.id.musicNameTv) as TextView
         songArtistText = itemView.findViewById(R.id.musicArtistTv) as TextView
 
-        item as MainRecommentModel
 
         songNameText.text = item.musicName
         songArtistText.text = item.musicArtist
         Glide.with(itemView.context).load(item.thumbnail).into(thumbnailImg)
+
+
+        Log.e("test","asdfhjklsdfahlweyqripu nasehrj")
 
     }
 
@@ -51,9 +55,6 @@ class MainRecommentViewHolder(
         container.pivotY = 0F
         container.animate().scaleX(scale)
             .withEndAction {
-//                songNameText.visibility = View.VISIBLE
-//                songArtistText.visibility = View.VISIBLE
-//                statusImg.visibility = View.VISIBLE
                 visibleAnimation(songNameText)
                 visibleAnimation(songArtistText)
                 visibleAnimation(statusImg)

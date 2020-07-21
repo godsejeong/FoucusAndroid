@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.jjmin.focus"
-        minSdkVersion 24
+        minSdkVersion 27
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -45,6 +45,7 @@ dependencies {
 
 
     //tdd
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-inline:2.13.0'
 
@@ -55,6 +56,8 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
 
     //noinspection GradleCompatible
@@ -95,7 +98,5 @@ dependencies {
 
     //horizental scroll view
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-
 
 }

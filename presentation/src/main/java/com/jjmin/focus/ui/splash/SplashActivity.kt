@@ -1,14 +1,9 @@
 package com.jjmin.focus.ui.splash
 
-import android.animation.Animator
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.SurfaceHolder
-import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.jjmin.focus.R
 import com.jjmin.focus.ui.base.BaseActivity
 import com.jjmin.focus.ui.main.MainActivity

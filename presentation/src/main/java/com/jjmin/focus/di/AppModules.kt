@@ -1,8 +1,7 @@
 package com.jjmin.focus.di
 
-import com.jjmin.focus.event.TimeCheckEvent
-import com.jjmin.focus.ui.main.MainContract
-import com.jjmin.focus.ui.main.MainPresenter
+import com.jjmin.focus.ui.home.HomeContract
+import com.jjmin.focus.ui.home.HomePresenter
 import com.jjmin.focus.ui.splash.SplashContract
 import com.jjmin.focus.ui.splash.SplashPresenter
 import com.jjmin.focus.utils.SharedPreferencesUtil
@@ -15,6 +14,6 @@ val myModule = module {
 }
 
 val pagesModule = module {
-    factory { (view : MainContract.View) -> MainPresenter(view,get(),get())}
+    factory { (view : HomeContract.View) -> HomePresenter(view,get(),get()) }
     factory { (view : SplashContract.View) -> SplashPresenter(view,get(),get()) }
 }
