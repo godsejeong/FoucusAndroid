@@ -10,28 +10,35 @@ import com.jjmin.focus.model.ItemType
 import com.jjmin.focus.model.ModelImpl
 
 
-class ListAdapter() : ListAdapter<ModelImpl,BaseViewHolder<ModelImpl>>(itemCallback){
+ class ListAdapter() : ListAdapter<ModelImpl,BaseViewHolder<ModelImpl>>(itemCallback){
     private lateinit var viewType : ItemType
-
-    init {
-        setHasStableIds(true)
-    }
 
     fun setType(viewType : ItemType){
         this.viewType = viewType
     }
-
+     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<ModelImpl> {
         return when (this.viewType) {
-            ItemType.MR -> MainRecommentViewHolder(parent.context, parent, R.layout.item_main_recomment)
+            ItemType.MR -> {
+                MainRecommentViewHolder(parent.context, parent, R.layout.item_main_recomment)
+            }
+
+            ItemType.SR -> {
+                MainRecommentViewHolder(parent.context, parent, R.layout.item_main_recomment)
+            }
+
+            ItemType.SRM -> {
+                MainRecommentViewHolder(parent.context, parent, R.layout.item_main_recomment)
+            }
         }
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ModelImpl>, position: Int) {
         holder.onBind(getItem(position))
+
     }
 
-    override fun submitList(list: List<ModelImpl?>?) {
+     override fun submitList(list: List<ModelImpl?>?) {
         super.submitList(list?.let { ArrayList(it) })
     }
 

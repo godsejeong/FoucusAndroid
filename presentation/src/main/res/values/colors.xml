@@ -5,6 +5,9 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorNight">#0037FF</color>
     <color name="colorDay">#FF0000</color>
+    <color name="colorTextBase">#FFFFFF</color>
+
+    <color name="colorBackgorundBase">#08061e</color>
 
     <color name="bottom_section_color">#84838F</color>
 

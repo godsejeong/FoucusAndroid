@@ -1,14 +1,13 @@
 package com.jjmin.focus.model
 
-import android.net.Uri
-
-data class MainRecommentModel(
-    val musicName : String,
+data class SubRecommentModel(
+    var musicName : String,
     val musicArtist : String,
     val thumbnail : String,
+    val musicSource : String,
     val musicUrl : String
-) : ModelImpl {
+) : ModelImpl{
     override fun getType(): ItemType {
-        return ItemType.MR
+        return ItemType.SRM
     }
 }

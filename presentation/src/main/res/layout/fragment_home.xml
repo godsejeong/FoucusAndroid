@@ -10,14 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/topContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/musicContainer"
+            app:layout_constraintBottom_toTopOf="@+id/musicScrollContainer"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@android:color/black">
+            tools:background="@color/colorPrimaryDark">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationVideo"
@@ -45,8 +44,8 @@
                         android:id="@+id/descriptionTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="나를 진정시켜주는"
-                        android:textColor="@android:color/white"
+                        android:text="이 노래 알아?"
+                        android:textColor="@color/colorTextBase"
                         android:textSize="13sp" />
 
                     <TextView
@@ -55,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:text="피아노-맑은 #fly"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/colorTextBase"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -70,33 +69,39 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.yarolegovich.discretescrollview.DiscreteScrollView
-                android:id="@+id/recommentedPicker"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pagerPicker"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:dsv_orientation="horizontal"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/textContainer"
+                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/musicContainer"
+        <ScrollView
+            android:id="@+id/musicScrollContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/colorBackgorundBase"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topContainer">
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/testRv"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/colorBackgorundBase"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topContainer">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/subRecyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

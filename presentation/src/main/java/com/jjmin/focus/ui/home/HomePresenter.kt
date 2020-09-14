@@ -26,7 +26,34 @@ class HomePresenter(
             MainRecommentModel(
                 "[Your Night / 당신의 밤] - Epic Gardener Sound",
                 "에픽가드너Epic Gardener",
-                "http://52.15.223.7:8080/thumbnails/maxresdefault.jpg",
+                "http://52.15.223.7:8080/thumbnails/maxresdefault_1.jpg",
+                "http://52.15.223.7:8080/songs/Your_Night--_.mp3"
+            )
+        )
+
+        add(
+            MainRecommentModel(
+                "[Your Night / 당신의 밤] - Epic Gardener Sound",
+                "에픽가드너Epic Gardener",
+                "http://52.15.223.7:8080/thumbnails/maxresdefault_1.jpg",
+                "http://52.15.223.7:8080/songs/Your_Night--_.mp3"
+            )
+        )
+
+        add(
+            MainRecommentModel(
+                "[Your Night / 당신의 밤] - Epic Gardener Sound",
+                "에픽가드너Epic Gardener",
+                "http://52.15.223.7:8080/thumbnails/maxresdefault_1.jpg",
+                "http://52.15.223.7:8080/songs/Your_Night--_.mp3"
+            )
+        )
+
+        add(
+            MainRecommentModel(
+                "[Your Night / 당신의 밤] - Epic Gardener Sound",
+                "에픽가드너Epic Gardener",
+                "http://52.15.223.7:8080/thumbnails/maxresdefault_1.jpg",
                 "http://52.15.223.7:8080/songs/Your_Night--_.mp3"
             )
         )
@@ -41,19 +68,15 @@ class HomePresenter(
         )
     }
 
-    var dummyList = MutableLiveData<ArrayList<ModelImpl>>(arrayListOf())
+    var mainRecommentList = MutableLiveData<ArrayList<ModelImpl>>(arrayListOf())
+    var subRecommentList = MutableLiveData<ArrayList<ModelImpl>>(arrayListOf())
 
-    fun init(){
-        dummyList.value = swapList
+    init{
+        mainRecommentList.value = swapList
     }
 
     override fun loadUI() {
-//        Observable.interval(2, TimeUnit.SECONDS, Schedulers.io())
-//            .take(500)
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe {
-                view.loadUI()
-//            }
+        view.loadUI()
     }
 
     override fun updateTheme(): Int {
