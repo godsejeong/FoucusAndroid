@@ -4,9 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
@@ -20,10 +17,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding {
-        enabled = true
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -33,6 +26,24 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
 }
@@ -62,7 +73,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation "com.android.support:recyclerview-v7:$rootProject.recyclerviewVersion"
 
-
     //noinspection GradleCompatible
     implementation "com.android.support:design:$rootProject.designVersion"
     implementation "com.github.nitrico.lastadapter:lastadapter:$rootProject.lastadapterVersion"
@@ -90,7 +100,7 @@ dependencies {
     //anko
     implementation "org.jetbrains.anko:anko:$rootProject.ankoVersion"
 
-    // koin
+    //koin
     implementation "org.koin:koin-android:$rootProject.koinVersion"
     implementation "org.koin:koin-android-viewmodel:$rootProject.koinVersion"
 
